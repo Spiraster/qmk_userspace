@@ -1,3 +1,2 @@
-#define DEBOUNCE 40
 #define ENABLE_COMPILE_KEYCODE
 #define FORCE_NKRO
