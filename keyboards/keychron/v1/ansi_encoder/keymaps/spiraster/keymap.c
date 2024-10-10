@@ -3,8 +3,6 @@
 #define KC_TASK LGUI(KC_TAB)
 #define KC_FLXP LGUI(KC_E)
 
-#define KC_HPSC LT(0, KC_PSCR)
-
 #define KC_HESC LT(0, KC_ESC)
 #define KC_HF1  LT(0, KC_F1)
 #define KC_HF2  LT(0, KC_F2)
@@ -18,6 +16,7 @@
 #define KC_HF10 LT(0, KC_F10)
 #define KC_HF11 LT(0, KC_F11)
 #define KC_HF12 LT(0, KC_F12)
+#define KC_HPSC LT(0, KC_PSCR)
 #define KC_HALT RALT_T(KC_APP)
 
 // 15, 15, 15, 14, 13, 10 = 82
@@ -59,9 +58,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!record->tap.count && record->event.pressed) {
         switch (keycode) {
-            case KC_HPSC:
-                tap_code(KC_INS);
-                return false;
             case KC_HESC:
                 tap_code16(A(KC_F4));
                 return false;
@@ -100,6 +96,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             case KC_HF12:
                 tap_code(KC_F24);
+                return false;
+            case KC_HPSC:
+                tap_code(KC_INS);
                 return false;
             case QK_MAKE:
                 add_mods(MOD_MASK_CS);
